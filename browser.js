@@ -1,17 +1,17 @@
 module.exports = get_blob()
 
 function get_blob() {
-  if(global.Blob) {
+  if(window.Blob) {
     try {
       new Blob(['asdf'], {type: 'text/plain'})
       return Blob
     } catch(err) {}
   }
 
-  var Builder = global.BlobBuilder ||
-    global.WebKitBlobBuilder ||
-    global.MozBlobBuilder ||
-    global.MSBlobBuilder
+  var Builder = window.BlobBuilder ||
+    window.WebKitBlobBuilder ||
+    window.MozBlobBuilder ||
+    window.MSBlobBuilder
 
   return function(parts, bag) {
     var builder = new Builder
